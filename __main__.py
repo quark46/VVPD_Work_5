@@ -8,7 +8,7 @@ menu_txt = ['"1" - Выполнить первую функцию',
 menu_error = 'Ошибка. Введите число в следующем диапазоне: [1, 4]'
 
 def get_int(text, err_text, bounds=None):
-    '''integer input'''
+    '''items'''
     while True:
         if isinstance(text, list):
             print('')
@@ -60,6 +60,47 @@ def arctan_taylor(x, terms=50):
         arctan_x += term
 
     return arctan_x
+
+
+def power_series(x, m, terms=50):
+    """
+    Вычисляет (1 - x)^m с использованием разложения в ряд Тейлора.
+
+    Короткое описание:
+    Реализация разложения (1 - x)^m = 1 - mx + m(m-1)x^2/2! - ... для заданного числа итераций.
+
+    Описание:
+    Функция вычисляет значение выражения (1 - x)^m с использованием ряда Тейлора.
+    Граничное условие: -1 < x < 1. Количество итераций задается константой terms.
+
+    Аргументы:
+    x (float): Значение, для которого нужно вычислить (1 - x)^m.
+    m (float): Степень, в которую возводится (1 - x).
+
+    Возвращаемое значение:
+    float: Приблизительное значение (1 - x)^m.
+
+    Исключения:
+    ValueError: Если x не в пределах (-1, 1).
+
+    Примеры использования:
+    #>>> power_series(0.5, 2)
+    0.5625
+    #>>> power_series(-0.5, 3)
+    1.875
+    """
+    if not isinstance(x, (int, float)) or not isinstance(m, (int, float)):
+        raise ValueError("x и m должны быть числами")
+    if x <= -1 or x >= 1:
+        raise ValueError("x должен быть в пределах (-1, 1)")
+
+    result = 1
+    term = 1
+    for n in range(1, terms + 1):
+        term *= -m * (x / n)
+        m -= 1
+        result += term
+    return result
 
 
 def main():
