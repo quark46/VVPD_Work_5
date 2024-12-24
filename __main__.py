@@ -203,7 +203,12 @@ def main():
                 approx_value = arctan_taylor(x)
                 print(f"arctan({x}) (аппроксимация) = {approx_value}")
             case 3:
-                x = get_int('Введите Х', 'Ошибка ввода')
+                try:
+                    x = float(input("Введите x (-1 < x < 1): "))
+                    m = float(input("Введите m: "))
+                    print(f"Результат: (1 - {x})^{m} ≈ {power_series(x, m)}")
+                except ValueError as e:
+                    print(f"Ошибка: {e}")
             case 4:
                 sys.exit()
 
