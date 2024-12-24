@@ -1,5 +1,35 @@
 import math
 
+def get_int(text, err_text, bounds=None):
+    '''integer input'''
+    while True:
+        if isinstance(text, list):
+            print('')
+            print(*text, sep='\n')
+        else:
+            print('')
+            print(text)
+        inp = input()
+        print('')
+        try:
+            inp = int(inp)
+        except ValueError:
+            print(err_text)
+        if isinstance(inp, int):
+            if isinstance(bounds, list):
+                if bounds[0] <= inp <= bounds[1]:
+                    return int(inp)
+                print(err_text)
+            else:
+                return int(inp)
+
+
+def menu(text, err_txt, bounds):
+    '''menu'''
+    user_inp = get_int(text, err_txt, bounds)
+    return user_inp
+
+
 def sinh_taylor(x, terms=50):
     """Вычисляет sh(x) с использованием разложения в ряд Тейлора"""
 
