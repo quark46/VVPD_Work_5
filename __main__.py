@@ -1,4 +1,11 @@
 import math
+import sys
+
+menu_txt = ['"1" - Выполнить первую функцию',
+            '"2" - Выполнить вторую функцию',
+            '"3" - Выполнить третью функцию',
+            '"4" - Завершить выполнение программы']
+menu_error = 'Ошибка. Введите число в следующем диапазоне: [1, 4]'
 
 def get_int(text, err_text, bounds=None):
     '''integer input'''
@@ -41,10 +48,6 @@ def sinh_taylor(x, terms=50):
     return sinh_x
 
 
-'''x = 1.0
-print(f"sinh({x}) = {sinh_taylor(x)}")'''
-
-
 def arctan_taylor(x, terms=50):
     """Вычисляет arctan(x) с использованием разложения в ряд Тейлора"""
 
@@ -59,14 +62,22 @@ def arctan_taylor(x, terms=50):
     return arctan_x
 
 
-'''x = 0.5 
-approx_value = arctan_taylor(x)
-print(f"arctan({x}) (аппроксимация) = {approx_value}")'''
-
-
 def main():
-    pass
+    while True:
+        user_choise = menu(menu_txt, menu_error, [1, 4])
+        match user_choise:
+            case 1:
+                x = get_int('Введите Х', 'Ошибка ввода')
+                print(f"sinh({x}) = {sinh_taylor(x)}")
+            case 2:
+                x = get_int('Введите Х', 'Ошибка ввода. Введите число в диапазаоне от -1 до 1', [-1, 1])
+                approx_value = arctan_taylor(x)
+                print(f"arctan({x}) (аппроксимация) = {approx_value}")
+            case 3:
+                x = get_int('Введите Х', 'Ошибка ввода')
+            case 4:
+                sys.exit()
 
 
-if __name__ == "__main__.py":
+if __name__ == "__main__":
     main()
