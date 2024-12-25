@@ -93,4 +93,4 @@
 ```
 ## Фотография 
 ![](## Фотография 
-![](https://i.pinimg.com/736x/f9/f9/28/f9f92877cdd523b1ad3f1524c2ce9fcb.jpg)
+![](https://ru.pinterest.com/pin/914864111806819277/)
